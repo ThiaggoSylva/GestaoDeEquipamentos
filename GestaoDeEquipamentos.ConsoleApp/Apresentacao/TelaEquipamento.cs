@@ -9,7 +9,7 @@ public class TelaEquipamento
 
     public string? ObterEscolhaMenuPrincipal()
     {
-        //Console.Clear();
+        Console.Clear();
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Gestão de Equipamentos");
         Console.WriteLine("---------------------------------");
@@ -27,7 +27,7 @@ public class TelaEquipamento
 
     public void Cadastrar()
     {
-        //Console.Clear();
+        Console.Clear();
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Gestão de Equipamentos");
         Console.WriteLine("---------------------------------");
@@ -79,7 +79,7 @@ public class TelaEquipamento
 
     public void Editar()
     {
-        //Console.Clear();
+        Console.Clear();
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Gestão de Equipamentos");
         Console.WriteLine("---------------------------------");
@@ -174,14 +174,13 @@ public class TelaEquipamento
 
     public void Excluir()
     {
-        //Console.Clear();
+        Console.Clear();
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Gestão de Equipamentos");
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Exclusão de Equipamento");
         Console.WriteLine("---------------------------------");
 
-        // 1. Perguntar qual equipamento o usuário quer excluir
         Console.WriteLine(
             "{0, -7} | {1, -15} | {2, -15} | {3, -22} | {4, -10}",
             "Id", "Nome", "Fabricante", "Preço de Aquisição", "Data de Fabricação"
@@ -193,7 +192,7 @@ public class TelaEquipamento
         {
             Equipamento? e = equipamentos[i];
 
-            if (e == null) // null guard/check
+            if (e == null)
                 continue;
 
             Console.WriteLine(
@@ -214,8 +213,6 @@ public class TelaEquipamento
             if (!string.IsNullOrWhiteSpace(idSelecionado) && idSelecionado.Length == 7)
                 break;
         } while (true);
-
-        // 2. Buscar o espaço em que o equipamento selecionado está armazenado
 
         bool conseguiuExcluir = repositorio.Excluir(idSelecionado);
 
@@ -238,7 +235,7 @@ public class TelaEquipamento
 
     public void VisualizarTodos()
     {
-        //Console.Clear();
+        Console.Clear();
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Gestão de Equipamentos");
         Console.WriteLine("---------------------------------");
