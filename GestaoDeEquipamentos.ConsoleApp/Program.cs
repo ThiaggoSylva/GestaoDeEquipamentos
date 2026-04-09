@@ -10,7 +10,6 @@ equipamentoTeste.id = Convert
     .ToLower()
     .Substring(0, 7); // 0-255
 
-
 equipamentoTeste.nome = "Notebook";
 equipamentoTeste.fabricante = "Acer";
 equipamentoTeste.precoAquisicao = 4000;
@@ -20,7 +19,7 @@ equipamentos[0] = equipamentoTeste;
 
 while (true)
 {
-    Console.Clear();
+    // Console.Clear();
     Console.WriteLine("---------------------------------");
     Console.WriteLine("Gestão de Equipamentos");
     Console.WriteLine("---------------------------------");
@@ -41,7 +40,7 @@ while (true)
 
     if (opcaoMenu == "1")
     {
-        Console.Clear();
+        // Console.Clear();
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Gestão de Equipamentos");
         Console.WriteLine("---------------------------------");
@@ -99,7 +98,7 @@ while (true)
         }
 
         Console.WriteLine("---------------------------------");
-        Console.WriteLine($"O registro \"{novoEquipamento.nome}\" foi cadastrado com sucesso.");
+        Console.WriteLine($"O registro \"{novoEquipamento.id}\" foi cadastrado com sucesso.");
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Digite ENTER para continuar...");
         Console.ReadLine();
@@ -112,7 +111,7 @@ while (true)
             possa editar todos os campos.
                 • Deve ter os mesmos critérios que o Requisito 1.
         */
-        Console.Clear();
+        // Console.Clear();
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Gestão de Equipamentos");
         Console.WriteLine("---------------------------------");
@@ -139,11 +138,87 @@ while (true)
             );
         }
 
-        Console.Write("Digite o id do equipamento que deseja editar: ");
+        string? idSelecionado;
+
+        do
+        {
+            Console.Write("Digite o id do equipamento que deseja editar: ");
+            idSelecionado = Console.ReadLine();
+
+            if (!string.IsNullOrWhiteSpace(idSelecionado) && idSelecionado.Length == 7)
+                break;
+        } while (true);
 
         // 2. Buscar/Validar o equipamento
+        Equipamento? equipamentoSelecionado = null;
+
+        for (int i = 0; i < equipamentos.Length; i++)
+        {
+            Equipamento? e = equipamentos[i];
+
+            if (e == null)
+                continue;
+
+            if (e.id == idSelecionado)
+            {
+                equipamentoSelecionado = e;
+                break;
+            }
+        }
+
+        if (equipamentoSelecionado == null)
+        {
+
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine($"Não foi possível encontrar o equipamento informado.");
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine("Digite ENTER para continuar...");
+            Console.ReadLine();
+            continue;
+        }
 
         // 3. Substitui as informações dos campos do equipamento pelas novas
+        Equipamento novoEquipamento = new Equipamento();
+
+        do
+        {
+            Console.Write("Digite o nome do equipamento: ");
+            novoEquipamento.nome = Console.ReadLine();
+
+            if (!string.IsNullOrWhiteSpace(novoEquipamento.nome) &&
+                novoEquipamento.nome.Length > 3)
+            {
+                break;
+            }
+
+        } while (true);
+
+        do
+        {
+            Console.Write("Digite o fabricante do equipamento: ");
+            novoEquipamento.fabricante = Console.ReadLine();
+
+            if (!string.IsNullOrWhiteSpace(novoEquipamento.fabricante) &&
+                novoEquipamento.fabricante.Length > 2)
+            {
+                break;
+            }
+
+        } while (true);
+
+        Console.Write("Digite o preço de aquisição do equipamento: ");
+        novoEquipamento.precoAquisicao = Convert.ToDecimal(Console.ReadLine());
+
+        Console.Write("Digite a data de fabricação do equipamento: ");
+        novoEquipamento.dataFabricacao = Convert.ToDateTime(Console.ReadLine());
+
+        equipamentoSelecionado.nome = novoEquipamento.nome;
+        equipamentoSelecionado.fabricante = novoEquipamento.fabricante;
+        equipamentoSelecionado.precoAquisicao = novoEquipamento.precoAquisicao;
+        equipamentoSelecionado.dataFabricacao = novoEquipamento.dataFabricacao;
+
+        Console.WriteLine("---------------------------------");
+        Console.WriteLine($"O registro \"{idSelecionado}\" foi editado com sucesso.");
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Digite ENTER para continuar...");
         Console.ReadLine();
