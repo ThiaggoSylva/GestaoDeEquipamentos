@@ -1,6 +1,22 @@
-﻿using GestaoDeEquipamentos.ConsoleApp;
+﻿using System.Security.Cryptography;
+using GestaoDeEquipamentos.ConsoleApp;
 
 Equipamento?[] equipamentos = new Equipamento[100];
+
+Equipamento equipamentoTeste = new Equipamento();
+
+equipamentoTeste.id = Convert
+    .ToHexString(RandomNumberGenerator.GetBytes(20))
+    .ToLower()
+    .Substring(0, 7); // 0-255
+
+
+equipamentoTeste.nome = "Notebook";
+equipamentoTeste.fabricante = "Acer";
+equipamentoTeste.precoAquisicao = 4000;
+equipamentoTeste.dataFabricacao = DateTime.Now;
+
+equipamentos[0] = equipamentoTeste;
 
 while (true)
 {
@@ -66,6 +82,11 @@ while (true)
         Console.Write("Digite a data de fabricação do equipamento: ");
         novoEquipamento.dataFabricacao = Convert.ToDateTime(Console.ReadLine());
 
+        novoEquipamento.id = Convert
+            .ToHexString(RandomNumberGenerator.GetBytes(20))
+            .ToLower()
+            .Substring(0, 7); // 0-255
+
         for (int i = 0; i < equipamentos.Length; i++)
         {
             Equipamento? e = equipamentos[i];
@@ -86,7 +107,46 @@ while (true)
 
     else if (opcaoMenu == "2")
     {
+        /*
+            Requisito 1.2: Como funcionário, Junior quer ter a possibilidade de editar um equipamento, sendo que ele
+            possa editar todos os campos.
+                • Deve ter os mesmos critérios que o Requisito 1.
+        */
+        Console.Clear();
+        Console.WriteLine("---------------------------------");
+        Console.WriteLine("Gestão de Equipamentos");
+        Console.WriteLine("---------------------------------");
+        Console.WriteLine("Edição de Equipamento");
+        Console.WriteLine("---------------------------------");
 
+        // 1. Perguntar qual equipamento o usuário quer editar
+
+        Console.WriteLine(
+            "{0, -7} | {1, -15} | {2, -15} | {3, -22} | {4, -10}",
+            "Id", "Nome", "Fabricante", "Preço de Aquisição", "Data de Fabricação"
+        );
+
+        for (int i = 0; i < equipamentos.Length; i++)
+        {
+            Equipamento? e = equipamentos[i];
+
+            if (e == null) // null guard/check
+                continue;
+
+            Console.WriteLine(
+                "{0, -7} | {1, -15} | {2, -15} | {3, -22} | {4, -10}",
+                e.id, e.nome, e.fabricante, e.precoAquisicao.ToString("C2"), e.dataFabricacao.ToShortDateString()
+            );
+        }
+
+        Console.Write("Digite o id do equipamento que deseja editar: ");
+
+        // 2. Buscar/Validar o equipamento
+
+        // 3. Substitui as informações dos campos do equipamento pelas novas
+        Console.WriteLine("---------------------------------");
+        Console.WriteLine("Digite ENTER para continuar...");
+        Console.ReadLine();
     }
 
     else if (opcaoMenu == "3")
