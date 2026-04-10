@@ -1,4 +1,5 @@
 ﻿using GestaoDeEquipamentos.ConsoleApp.Apresentacao;
+using GestaoDeEquipamentos.ConsoleApp.Dominio;
 using GestaoDeEquipamentos.ConsoleApp.Infraestrutura;
 
 RepositorioEquipamento repositorioEquipamento = new RepositorioEquipamento();
@@ -10,6 +11,15 @@ telaEquipamento.repositorioEquipamento = repositorioEquipamento;
 TelaChamado telaChamado = new TelaChamado();
 telaChamado.repositorioChamado = repositorioChamado;
 telaChamado.repositorioEquipamento = repositorioEquipamento;
+
+// Dados teste
+Equipamento equipamento = new Equipamento();
+equipamento.nome = "Notebook";
+equipamento.fabricante = "Acer";
+equipamento.precoAquisicao = 2000;
+equipamento.dataFabricacao = DateTime.Now;
+
+repositorioEquipamento.Cadastrar(equipamento);
 
 while (true)
 {
