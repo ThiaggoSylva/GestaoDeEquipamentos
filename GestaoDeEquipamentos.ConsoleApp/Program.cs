@@ -23,7 +23,7 @@ repositorioEquipamento.Cadastrar(equipamento);
 
 while (true)
 {
-    // Console.Clear();
+    Console.Clear();
     Console.WriteLine("---------------------------------");
     Console.WriteLine("Gestão de Equipamentos");
     Console.WriteLine("---------------------------------");
@@ -48,7 +48,7 @@ while (true)
 
             if (opcaoMenu == "S")
             {
-                // Console.Clear();
+                Console.Clear();
                 break;
             }
 

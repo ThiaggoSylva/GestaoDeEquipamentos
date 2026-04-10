@@ -10,7 +10,7 @@ public class TelaChamado
 
     public string? ObterEscolhaMenuPrincipal()
     {
-        //Console.Clear();
+        Console.Clear();
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Gestão de Chamados");
         Console.WriteLine("---------------------------------");
@@ -28,7 +28,7 @@ public class TelaChamado
 
     public void Cadastrar()
     {
-        //Console.Clear();
+        Console.Clear();
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Gestão de Chamados");
         Console.WriteLine("---------------------------------");
@@ -123,7 +123,7 @@ public class TelaChamado
 
     public void VisualizarTodos()
     {
-        //Console.Clear();
+        Console.Clear();
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Gestão de Chamados");
         Console.WriteLine("---------------------------------");
