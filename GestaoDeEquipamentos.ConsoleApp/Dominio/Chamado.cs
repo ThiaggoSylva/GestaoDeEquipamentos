@@ -1,17 +1,15 @@
 namespace GestaoDeEquipamentos.ConsoleApp.Dominio;
 
-public class Chamado
+public class Chamado : EntidadeBase
 {
-    public string id;
-    public string titulo;
+    public string titulo = string.Empty;
     public string? descricao;
     public DateTime dataAbertura;
-    public Equipamento equipamento;
+    public Equipamento equipamento = new Equipamento();
 
     public int ObterDiasDecorridos()
     {
         TimeSpan diferencaTempo = DateTime.Now.Subtract(dataAbertura);
-
         return diferencaTempo.Days;
     }
 }

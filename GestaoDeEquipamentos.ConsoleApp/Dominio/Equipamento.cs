@@ -1,10 +1,9 @@
 namespace GestaoDeEquipamentos.ConsoleApp.Dominio;
 
-public class Equipamento
+public class Equipamento : EntidadeBase
 {
-    public string id;
-    public string nome;
-    public string fabricante;
+    public string nome = string.Empty;
+    public Fabricante fabricante = new Fabricante();
     public decimal precoAquisicao;
     public DateTime dataFabricacao;
 }
